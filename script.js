@@ -15,7 +15,7 @@ function validateForm() {
 
     var regName = /^[a-zA-Z]+$/;
     var phonereg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
-    var pass = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
+    var pass = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_])/
     if (f_name == null || f_name == "") {
         alert("Name can't be blank");
         return false;
@@ -40,8 +40,8 @@ function validateForm() {
         alert("Invalid Email given.");
         return false
     }
-    else if (!pass.test(password)) {
-        alert("Password must include 1 special symbol and one Capital character.")
+    else if (!pass.test(myForm.password.value)) {
+        alert("Password must include atleast one special symbol ,digit, uppercase and lowercase character .")
         return false
     }
     else {
